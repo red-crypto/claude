@@ -1,0 +1,11 @@
+[package]
+name = "logic"
+version = "0.1.0"
+edition = "2021"
+description = "Hardware-independent firmware logic. no_std, unit-tested on the host."
+
+[dependencies]
+defmt = { version = "1.0", optional = true }
+
+[features]
+defmt = ["dep:defmt"]

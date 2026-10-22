@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "firmware: build",
+      "type": "cargo",
+      "command": "build",
+      "options": { "cwd": "${workspaceFolder}/firmware" },
+      "problemMatcher": ["$rustc"],
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "firmware: flash + RTT log (cargo run)",
+      "type": "cargo",
+      "command": "run",
+      "options": { "cwd": "${workspaceFolder}/firmware" },
+      "problemMatcher": ["$rustc"]
+    },
+    {
+      "label": "logic: host unit tests",
+      "type": "cargo",
+      "command": "test",
+      "options": { "cwd": "${workspaceFolder}/logic" },
+      "problemMatcher": ["$rustc"],
+      "group": "test"
+    },
+    {
+      "label": "firmware: HIL tests (board required)",
+      "type": "cargo",
+      "command": "test",
+      "options": { "cwd": "${workspaceFolder}/firmware" },
+      "problemMatcher": ["$rustc"],
+      "group": "test"
+    },
+    {
+      "label": "pipeline: check (+HIL)",
+      "type": "shell",
+      "windows": { "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check.ps1 -Hil" },
+      "linux": { "command": "scripts/check.sh --hil" },
+      "osx": { "command": "scripts/check.sh --hil" },
+      "problemMatcher": ["$rustc"]
+    }
+  ]
+}

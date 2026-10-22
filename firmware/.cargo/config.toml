@@ -1,0 +1,10 @@
+[target.thumbv7em-none-eabihf]
+# probe-rs auto-detects normal firmware vs. embedded-test binaries.
+# --connect-under-reset helps when the running firmware uses WFI/low-power.
+runner = "probe-rs run --chip STM32F411RETx --connect-under-reset"
+
+[build]
+target = "thumbv7em-none-eabihf" # Cortex-M4F
+
+[env]
+DEFMT_LOG = "debug"

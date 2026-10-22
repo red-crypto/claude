@@ -1,0 +1,57 @@
+[package]
+name = "firmware"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+logic = { path = "../logic", features = ["defmt"] }
+
+embassy-stm32 = { version = "0.6.0", features = [
+    "defmt",
+    "stm32f411re",
+    "unstable-pac",
+    "memory-x",
+    "time-driver-any",
+    "exti",
+] }
+embassy-executor = { version = "0.10.0", features = [
+    "platform-cortex-m",
+    "executor-thread",
+    "defmt",
+] }
+embassy-time = { version = "0.5.1", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-sync = { version = "0.8.0", features = ["defmt"] }
+embassy-futures = "0.1.2"
+
+cortex-m = { version = "0.7.7", features = ["critical-section-single-core", "inline-asm"] }
+cortex-m-rt = "0.7.5"
+
+defmt = "1.0"
+defmt-rtt = "1.0"
+panic-probe = { version = "1.0", features = ["print-defmt"] }
+
+[dev-dependencies]
+embedded-test = { version = "0.7.2", features = [
+    "defmt",
+    "embassy-010",
+] }
+
+[[bin]]
+name = "firmware"
+test = false
+bench = false
+
+# HIL tests: run on the real board via `cargo test` (probe-rs is the runner).
+[[test]]
+name = "hil"
+harness = false
+
+[profile.dev]
+opt-level = "s"
+debug = 2
+
+[profile.release]
+opt-level = "s"
+debug = 2
+lto = "fat"
+codegen-units = 1

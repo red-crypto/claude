@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo build:*)",
+      "Bash(cargo test:*)",
+      "Bash(cargo clippy:*)",
+      "Bash(cargo fmt:*)",
+      "Bash(cargo check:*)",
+      "Bash(cargo tree:*)",
+      "Bash(probe-rs list:*)",
+      "Bash(probe-rs info:*)",
+      "Bash(scripts/check.sh:*)",
+      "Bash(scripts/run-capture.sh:*)",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check.ps1:*)",
+      "Bash(powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run-capture.ps1:*)",
+      "PowerShell(powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check.ps1:*)",
+      "PowerShell(powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run-capture.ps1:*)"
+    ],
+    "ask": [
+      "Bash(probe-rs erase:*)",
+      "Bash(probe-rs download:*)"
+    ]
+  }
+}
