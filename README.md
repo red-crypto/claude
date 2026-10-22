@@ -65,6 +65,8 @@ probe-rs가 ELF를 한 번 플래시하고 테스트마다 리셋 후 개별 실
    `tests/hil.rs` 에 HIL 테스트 추가 → `/hil` (check 스크립트) → `logs/` 분석 → 반복
 4. 결과는 `SUMMARY: fmt=PASS ... hil=PASS` 한 줄로 보고
 
+> 환경설정 전체 요약과 새 채팅 시작 프롬프트: [docs/ENV_SETUP.md](docs/ENV_SETUP.md)
+
 ## 4. 다음 단계 아이디어
 - 외부 계측 루프백: 두 번째 보드나 USB-UART/로직분석기(sigrok-cli)로 VCP/PWM 파형 자동 검증
 - `scripts/` 에 VCP(UART) 캡처 추가 (pyserial) → UART 출력도 HIL assertion 대상으로
